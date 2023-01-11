@@ -36,6 +36,35 @@ Just writing a README to keep up best practice- just wanted to learn a bit more 
 * If you notice mistakes or bugs, please email pang.todd@gmail.com
 
 ## Notes
+* Lesson 1: just set up, but introduces the fact that TS is compilied. You need to install typeScript globally in order to get it to compile.
+* Lesson 2:
+  * TS is an extension of JS.
+  * TS provided all current/modern features JS has, plus some extra features
+  * but mainly focused on how it allows JS to be strongly typed, which helps catch errors and encourages cleaner code.
+  * however, browsers cannot read it, must be compiled and transformed into JS.
+  * Note that "numbers" is a data type- it includes floats and intergers.
+  * Demonstrates how to compile, in terminal run "tsc filename.ts". This will create a file with the same name, but with a .js extension. OR if you have a .js file you want to have the ts file compiled into, you can type it out like: "tsc filename.ts filename.js" 
+  * demonstrated the watcher function, which will automatically compile the file. Just add a -w flag after your file name. Example: tsc filename.ts -w"
+* lesson 3:
+  * TS also infers the type- ie, when you first establish a variable, it pays attention to the formatting and figures out if you are writing a string ("string"), a number (20) or a boolean (true). Once defined, you cannot change the type (although you can change the value, as long as it is the same data type). 
+  * You can also tell a function what data type it should expect in an argument. Ie: function doubleScore(score: number).
+  * note that type matching/checking happens before compiling- so you can't tell by looking at the post-compiled JS that a function only accepts strings, numbers, etc.
+* Lesson 4 (arrays/object)
+  * arrays: 
+    * once you establish the data types for an array, they must all be that data type.
+    * you can have mixed array, but must be mixed when first established/declared.
+    * once an array is established, you can't update it to a different type. For example, if I established "names" as an array of strings, I couldn't change "names" later to an object.
+  * objects:
+    * once established, you cannot change the attribute types of the object. Example:
+
+let game = {
+  name: "poker",
+  score: 32,
+  currentlyPlaying: true
+}
+  * You can update values (name, score, or CurrentlyPlaying), but again, must be the same type. 
+  * you cannot add a new attribute, ie, if you wanted to add game.winner = "player1", it would not work.
+
 
 
 ## License
