@@ -58,3 +58,72 @@ let game = {
   * however, this includes ts files OUTSIDE of the src folder. You can configure it so only the files in the src directory/folder are automatically compiled into the src folder:
     * outside of the "compilerOptions" object, add "include": ["src"] (don't forget to put a comma after the compilerOptions object). 
   * more about config here: https://www.typescriptlang.org/docs/
+* lesson 8:Functions basics:
+  * again, TS generally can infer when you create a function
+  * you can again explicitly call it a function. Example: (let greet: Function).
+    * notice that "Function" is capitalized, which is not the case for strings, numbers, etc.
+  * you can(should?) also explicitly call out the types of the argument or arguments. Example:
+  const add = (a: number, b: number)
+  * you can also set an optional parameter by using a question mark. Example:
+  const add = (a: number, b: number, c?:number|string)
+  * Note the union type- also possible when defining arguments.
+  * You can also set a default value for an argument. Example:
+    const add = (a: number, b: number, c:number|string = 10)
+    * you should put optional arguments at the end.
+  * Returns: if your function has a return, TS will infer what the return value is. IE:
+    const minus = (a: number, b: number)=>{
+      return a + b
+    }
+    let restult = minus(10, 7)
+    Result MUST be a number.
+  * you can also explicitly name what the return type, even though TS will infer it.
+  * void functions are functions that do not have a return statement (void of return). When compiled into JS, will come back as undefinied. 
+*lesson 9: Type Alias
+  *sometimes when working with functions, the arguments can get complex. For example:
+  const logDetails = (uid: string | number, item: string)=>{
+    console.log(`{item} has uid of ${uid}`);
+  }
+  const greet = (user: {name: string, uid: string | number})=>{
+    console.log(`{user.name} says haaaaay`);
+  }
+  * you can create Type alias. Using the example above you could:
+    * type StringOrNum = string|number; (you could then subsitute that in anytime you have string|num)
+    * type objWithName ={ name:string, uid:StringOrNum }
+    *QUESTION: why was the type StringOrNum capitalized?
+  
+*lesson 10: Function signatures
+  * a function signature is essentially the pattern of the functions argument types and return. 
+  * first example:
+  let greet: (a: string, b: string)=> void
+  greet = (name:string, greeting: string)=> {
+    console.log(`${name} says ${greeting}`)
+  } (this works fine, everything matches up.)
+  *2nd example:
+   let calc: (a: number, b:number, c: string) => number;
+
+   calc = (numOne; number, numTwo: number, action: string)=>{
+    if (action === 'add'){
+      return numOne + numTwo;
+    }
+    <!-- this doesn't work without an else statment...you would return void if action != string -->
+    else{
+      return numOne - numTwo;
+    }
+   }
+  * 3rd example:
+
+  let logDetails: (obj: {name:string, age:number})=>void;
+
+
+  logDetails = (ninja: {name:string, age:number})=>{
+    console.log(`${ninja.name} is ${ninja.age} years old.`)
+  }
+
+    <!-- if you wanted to use a type alias: -->
+  type person = {name:string, age:number}
+
+    logDetails = (ninja: person)=>{
+    console.log(`${ninja.name} is ${ninja.age} years old.`)
+  }
+*lesson 11: the Dom and Type Casting
+  *
