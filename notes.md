@@ -194,6 +194,33 @@ invoices.push(invTwo);
 
 console.log(invoices)
 
+  * note that the class is currently public, which means it can be edited. Next lesson will go into this more.
 
+* lesson 13: public, private, readonly.
+  * by default, the class attributes are public (you don't have to specified, it's kind of infered.)
+  * There are 3 access modifiers:
+    * Public. Most permissive- allows it to be read and edited (including outside of the class)
+    * Private. Most restricive- allows it to only be read and edited WITHIN the class.
+    * Readonly. Medium permissions- allows it to be read within the class, but only read outside of the class.
+  * There is a shorthand available (this only works when using modifiers):
+
+class Invoice{
+  // readonly client: string;
+  // private details: string;
+  // public amount: number;
+
+  constructor(
+    readonly client: string,
+    private details: string,
+    public amount: number,
+  ){}
+
+  format(){
+    return `${this.client} owes $${this.amount} for ${this.details}`
+  }
+}
+
+* lesson 14: modules
+  
 
 
