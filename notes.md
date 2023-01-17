@@ -163,6 +163,37 @@ const amount = document.querySelector('#amount') as HTMLInputElement;
 
 console.log(amount.valueAsNumber);
 
+* lesson 12: classes
+  * Just like in JS, you can take advantage of OOP and create classes.
+    * refresher: classes can have constructors and functions.
+    * however, note that in the constructor, you will need to explicitly call out your arguments' types, even though they were definied in the class itself. Example:
+
+class Invoice{
+  client: string;
+  details: string;
+  amount: number;
+
+  constructor(c: string, d: string, a: number){
+    this.client = c;
+    this.details =d;
+    this.amount =a;
+  }
+
+  format(){
+    return `${this.client} owes $${this.amount} for ${this.details}`
+  }
+}
+  * cool...but why? The payoff is you can be more specific using classes. For example, you could have an array that comprises of ONLY a particlar class. Example tied to the one above:
+
+const invOne = new Invoice("mario", "work on Marioworld", 400);
+const invTwo = new Invoice("Luigi", "Luigi.com work", 250)
+
+let invoices: Invoice[]= [];
+invoices.push(invOne);
+invoices.push(invTwo);
+
+console.log(invoices)
+
 
 
 
