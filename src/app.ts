@@ -11,7 +11,7 @@ class Invoice{
   }
 
   format(){
-    return `${this.client} owes $${this.amount} for ${details}`
+    return `${this.client} owes $${this.amount} for ${this.details}`
   }
 }
 
@@ -22,7 +22,9 @@ let invoices: Invoice[]= [];
 invoices.push(invOne);
 invoices.push(invTwo);
 
-console.log(invoices)
+invoices.forEach(inv=>{
+  console.log(inv.client, inv.details, inv.amount, inv.format());
+});
 
 const form = document.querySelector(".new-item-form") as HTMLFormElement;
 
