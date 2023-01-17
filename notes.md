@@ -126,4 +126,43 @@ let game = {
     console.log(`${ninja.name} is ${ninja.age} years old.`)
   }
 *lesson 11: the Dom and Type Casting
-  *
+  * TS works just like JS as far as interacting iwth the dom with querySelectors, onClick, etc.
+  * However, it doesn't have access to the DOM before it renders. For example, consider this:
+
+const anchor = document.querySelector('a');
+
+console.log(anchor.href);
+  * this will show an error because it doesn't know in advance that the "a" tag exists within the document, or that it will be an href type. Therefore anchor.href could be void. The console will show with swiggly lines (error). Two options to fix:
+
+const anchor = document.querySelector('a');
+
+if(anchor){
+  console.log(anchor.href);
+}
+  * this is acceptable, b/c if it is void, it won't console.log anything.
+
+const anchor = document.querySelector('a')!;
+console.log(anchor.href);
+  * the ! is a way of saying, I'm absolutely sure there is an "a", this will return something. Trust me. (so only use this if you are like, 100% sure)
+  * Note that when you hover over Anchor, TypeScript will recognize that it is an href element, and VS code will be able to use its intellisense to provide suggestions.
+
+  * typecasting. Consider this example:
+
+const form = document.querySelector(".new-item-form");
+  * when you hover over form, it will only show as an element, not a htmlForm element. This is bc .new-item-form is the class, which TS doesn't "know" about- it understands "a" is an anchor tag, or that "form" is a form, but a user-defined class, TS has no way of knowing.
+  * you can fix this with Typecasting:
+const form = document.querySelector(".new-item-form") as HTMLFormElement;
+  * We do this for all of the form elements:
+
+const type = document.querySelector('#type') as HTMLSelectElement;
+const toFrom = document.querySelector('#toFrom') as HTMLInputElement;
+const details = document.querySelector('#details') as HTMLInputElement;
+const amount = document.querySelector('#amount') as HTMLInputElement;
+
+  * note that with amount, if we console.log that, it will come back as a string, even though we want it as a number. You can correct that by using .valueAsNumber (which seems to work like .parseInt):
+
+console.log(amount.valueAsNumber);
+
+
+
+
