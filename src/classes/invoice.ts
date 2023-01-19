@@ -1,4 +1,4 @@
-class Invoice{
+export class Invoice{
   constructor(
     readonly client: string,
     private details: string,
