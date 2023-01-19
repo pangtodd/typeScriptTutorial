@@ -221,6 +221,24 @@ class Invoice{
 }
 
 * lesson 14: modules
-  
+  * ES6 supports modules.
+  * similar idea as components in React- you can import/export modules.
+  * note that older browsers may not support, must use a modern browswer (firefox, chrome) b/c modules need to be compiled into a unified file. older browers may not do this.
+  * you could use webpacks to get around this, but that's a separate lesson.
+  * configure: you will need to update your tsconfig.json file:
+    * update the "module" to be "ES2015".
+    * update the "target" to be "es6".
+  * you will also need to update your index.html script to look like:   <script type="module" src='app.js'></script>
+  * After that, create a new folder in the SRC directory (we called it classes), and add a .ts file for your module- in this case, "Invoice".
+  * Put your class into the file. 
+  * export the item you want (in this case the class.)
+  * the{nin the file you want to use it (app.ts) and import it at the top of the file in this format:
+import { class } from './classes/invoice.js';
+  * note that you'll need to import the file as invoice.js (you want it after it was compiled- don't use the .ts version).
+  * Leads to one problem- two requests are going to happen, both to the .ts and .js files. Again, we could fix that with webpack, but we'll ave that for later.
+*lesson 15: interfaces.
+
+
+
 
 
