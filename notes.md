@@ -236,7 +236,11 @@ class Invoice{
 import { class } from './classes/invoice.js';
   * note that you'll need to import the file as invoice.js (you want it after it was compiled- don't use the .ts version).
   * Leads to one problem- two requests are going to happen, both to the .ts and .js files. Again, we could fix that with webpack, but we'll ave that for later.
-*lesson 15: interfaces.
+* lesson 15: interfaces.
+  * interface allows us to enforce a certain structure of a class or object.
+  * Not a class- it really just sets up a signature/structure which it checks/enforces.
+  * Can be applied to multiple objects/classes, etc, even if they contain different data sets- just have to follow the pattern.
+  
 
 
 
