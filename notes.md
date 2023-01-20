@@ -240,7 +240,30 @@ import { class } from './classes/invoice.js';
   * interface allows us to enforce a certain structure of a class or object.
   * Not a class- it really just sets up a signature/structure which it checks/enforces.
   * Can be applied to multiple objects/classes, etc, even if they contain different data sets- just have to follow the pattern.
-  
+* Lesson 16: interfaces with classes.
+  * Similar to the modules system, you can set up a new folder/file structure to hold interfaces and import them as needed. Example: src/interfaces/HasFormatter.ts
+  * Within the file, create your file (make sure to start off with Export). Example:
+export interface HasFormatter {
+  format(): string;
+}
+  * After you get it set up, you can import it into files where you want to use the interface.
+  * to implement it within in class, you can do so like this (example:)
+
+import { HasFormatter } from '../interfaces/HasFormatter.js';
+
+export class Invoice implements HasFormatter {
+  ...
+}
+  * again, multiple classes, variables, etc, can use one interface...as long as they comply with its structure.
+  * you can also have an array that only allows items which comply to an interface. Example:
+
+  let docs: HasFormatter[] = [];
+
+  * this ensures every item of that array will have that interface element in common.
+* lesson 17: Rendering an HTML template
+
+
+
 
 
 
