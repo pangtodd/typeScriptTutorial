@@ -261,6 +261,42 @@ export class Invoice implements HasFormatter {
 
   * this ensures every item of that array will have that interface element in common.
 * lesson 17: Rendering an HTML template
+  * In this lesson, we are taking the data we are successfully getting out of the console.log and getting it to populate on the page.
+  * We are going to do this by setting up a new class called ListTemplate.ts, which will do the following:
+    * Register a list container (ul) in the constructor
+    * Create a render method to render a new 'li' heading to the container (again the 'ul')
+      * it will accept arguments: invoice or payment, a heading, a position (top or bottom)
+      * create the the HTML template (li, h4, p)
+      * add the 'li' template to the start/end of the list.
+    * here's what the code looks like:
+
+import { HasFormatter } from "../interfaces/HasFormatter.js";
+export class ListTemplate{
+  constructor(private container: HTMLUListElement){}
+<!-- note how it uses HasFormatter interface in the arguments...it covers both invoices and payments. -->
+  render(item: HasFormatter, heading: string, pos: 'start' | 'end'){
+    const li = document.createElement('li');
+
+    const h4 = document.createElement('h4');
+    h4.innerText = heading;
+    li.append(h4);
+
+    const p = document.createElement('p');
+    p.innerText = item.format();
+    li.append(p);
+
+    if (pos === 'start'){
+      this.container.prepend(li)
+    } else {
+      this.container.append(li);
+    }
+  }
+}
+
+  * now this can be called in app.ts to help create the HTML to have your input rendered on to the DOM.
+  * note: need to review vanilla JS for DOM manipulation...still used to JQuery, dammit.
+*lesson 18: generics
+
 
 
 

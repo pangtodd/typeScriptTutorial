@@ -1,6 +1,6 @@
 # Typescript tutorial/starter project
 
-#### completed by Todd Pangilinan?
+#### completed by Todd Pangilinan
 
 Worked a little with TypeScript, but wanted a better understanding. Decided to do a basic tutorial via NetNinja, using these reources:
 
