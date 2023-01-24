@@ -295,7 +295,61 @@ export class ListTemplate{
 
   * now this can be called in app.ts to help create the HTML to have your input rendered on to the DOM.
   * note: need to review vanilla JS for DOM manipulation...still used to JQuery, dammit.
-*lesson 18: generics
+* lesson 18: generics
+  * can be used with functions an interfaces (maybe more?)
+  * "reusable blocks of codes which can be different types"
+  * example:
+
+const addUID = <T extends object>(obj: T)=> {
+  <!-- the <T>T essentially "captures" whatever the type is here -->
+  let uid = Math.floor(Math.random() * 100);
+  return {...obj, uid};
+}
+
+let docOne = addUID({name: "bobby", age: 30});
+
+OR
+
+const addUID = <T extends {name: string}>(obj: T)=> {
+  <!-- this is saying: must be object with a property name that is a string -->
+  let uid = Math.floor(Math.random() * 100);
+  return {...obj, uid};
+}
+
+  * example with interface- let's say we don't know what "data" will be:
+interface Resource {
+  uid: number;
+  resourceName: string;
+  data: "????";
+}
+
+can solve by:
+
+interface Resource<T> {
+  uid: number;
+  resourceName: string;
+  data: T;
+}
+<!-- again, T is basically an argument for what type it should expect. -->
+
+you can now do stuff like:
+
+const docThree: Resource<object> = {
+  uid: 1,
+  resourceName: "person",
+  data: {name: 'bobby'}
+}
+  OR
+const docFour: Resource<string[]> = {
+  uid: 1,
+  resourceName: "persons",
+  data: ['ronny', 'bobby', 'ricky','mike']
+}
+
+
+let docOne = addUID({name: "bobby", age: 30});
+
+* lesson 19: enums
 
 
 
