@@ -350,6 +350,24 @@ const docFour: Resource<string[]> = {
 let docOne = addUID({name: "bobby", age: 30});
 
 * lesson 19: enums
+  * specal type in TS, which allows us to store constants/key words and associate them with a number (numeric value).
+  * Example:
+
+enum ResourceType {BOOK, AUTHOR, FILM, DIRECTOR, PERSON}
+
+interface Resouce <T>{
+  uid: number;
+  resourceType: ResourceType;
+  Data: T
+}
+
+const docOne: Resource<object> ={
+  uid: 1,
+  resourceType: ResourceType.BOOK,
+  data: {title: 'name of book'}
+}
+
+if you console.log(docOne), it won't say resourceType: BOOK, it will say resoruceType: 0. it is associated with the index position of ResourceType.
 
 
 
