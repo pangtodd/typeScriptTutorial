@@ -368,6 +368,10 @@ const docOne: Resource<object> ={
 }
 
 if you console.log(docOne), it won't say resourceType: BOOK, it will say resoruceType: 0. it is associated with the index position of ResourceType.
+* Lesson 20: tuples:
+  * similar to array, but 'locks' the type for each position. Example:
+let tup: [string, number, boolean]
+
 
 
 
